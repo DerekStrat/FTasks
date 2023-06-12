@@ -1,16 +1,15 @@
 <?php
 class Palindrome {
     public static function isPalindrome($Word) {
+        print $Word . "<br>";
         $ReplaceWord = preg_replace("/[^a-zA-Z0-9]/", "", $Word);
-        $EditWord = strtolower($ReplaceWord);
-
-        print $EditWord . "<br>";
 
         $StrArr = str_split($ReplaceWord);
         $ReversedArray = array_reverse($StrArr);
+        
         $PosCounter = 0;
-        foreach ($StrArr as $Letter) {
-            if ($Letter == $ReversedArray[$PosCounter]) {
+        foreach ($StrArr as $Char) {
+            if ($Char == $ReversedArray[$PosCounter]) {
                 return true;
             } 
             $PosCounter++;
