@@ -3,28 +3,28 @@
         public static function returnStringAsArray($ItemsArr) { // Takes the string and returns an array of elements seperated by a comma (,).
             $NewArray = array();
     
-            $str = str_replace("array(", "", $ItemsArr);
-            $str = str_replace(" )", "", $str);
+            $ReplaceStr = str_replace("array(", "", $ItemsArr);
+            $ReplaceStr = str_replace(" )", "", $ReplaceStr);
             
-            $ItemsArr = explode(",","$str");
-            foreach($ItemsArr as $element){
-                $element = str_replace("'", "", $element);
-                $element = str_replace('"', '', $element);
+            $ItemsArr = explode(",","$ReplaceStr");
+            foreach($ItemsArr as $ItemStr){
+                $ItemStr = str_replace("'", "", $ItemStr);
+                $ItemStr = str_replace('"', '', $ItemStr);
     
-                array_push($NewArray, trim($element));
+                array_push($NewArray, trim($ItemStr));
             }
             return $NewArray;
         }
         
         public static function groupByOwners($StrArr) { // groups
-            $ItemsArr = ItemOwners::returnStringAsArray($StrArr);
+            $NewItemsArr = ItemOwners::returnStringAsArray($StrArr);
     
-            if (!empty($ItemsArr)) {
+            if (!empty($NewItemsArr)) {
                 $ReturnArr = array();
     
-                foreach ($ItemsArr as $str) {
+                foreach ($NewItemsArr as $ItemStr) {
                     $ExplodeArr = array();
-                    $ExplodeArr = explode(' => ', $str, 2);
+                    $ExplodeArr = explode(' => ', $ItemStr, 2);
         
                     if (!isset($ReturnArr[$ExplodeArr[1]])) {
                         $ReturnArr[$ExplodeArr[1]] = array();
