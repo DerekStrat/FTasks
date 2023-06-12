@@ -3,13 +3,13 @@
         public static function groupByOwners($ItemsArr) {
             if (!empty($ItemsArr)) {
                 $ReturnArr = array();
-                foreach ($ItemsArr as $Key => $Name) {
-                    if (!isset($ReturnArr[$Name])) {
-                        $ReturnArr[$Name] = array();
-                        array_push($ReturnArr[$Name], $Key);
+                foreach ($ItemsArr as $ItemStr => $NameOfOwner) {
+                    if (!isset($ReturnArr[$NameOfOwner])) {
+                        $ReturnArr[$NameOfOwner] = array();
+                        array_push($ReturnArr[$NameOfOwner], $ItemStr);
                     }
                     else {
-                        array_push($ReturnArr[$Name], $Key);
+                        array_push($ReturnArr[$NameOfOwner], $ItemStr);
                     }
                 }
                 return $ReturnArr;
@@ -23,7 +23,6 @@
     "Baseball Bat" => "John",
     "Golf ball" => "Stan",
     "Tennis Racket" => "John",
-    "Tennis Racket" => "Stan",
     "Cricket Bat" => "Stan",
     "Rugby Ball" => "John"
     );
